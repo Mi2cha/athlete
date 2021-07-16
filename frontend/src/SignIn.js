@@ -14,11 +14,11 @@ function SignIn(){
 
     const sendUser=(e) =>{
         e.preventDefault();
-        console.log(user)
 
         axios.post('/auth/login', user)
             .then((res) => {
                 if (res.data){
+                    localStorage.setItem("token",res.data);
                     history.push("/users")
                 }
             })

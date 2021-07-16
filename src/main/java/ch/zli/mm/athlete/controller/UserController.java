@@ -41,7 +41,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
-        System.out.println("hi");
+        System.out.println(user.getRole());
         if (user != null) {
             DBMANAGER.saveUser(user);
             return new ResponseEntity<>(HttpStatus.CREATED);

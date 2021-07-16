@@ -18,16 +18,16 @@ public class AthleteController {
 
 
     @GetMapping
-    public ResponseEntity<?> getAthletes() {
+    public ResponseEntity<ArrayList<Athlete>> getAthletes() {
         ArrayList<Athlete> dbAthletes = DBMANAGER.getAllAthletes();
         if (dbAthletes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(dbAthletes, HttpStatus.OK);
+        return new ResponseEntity<ArrayList<Athlete>>(dbAthletes, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<?> getAthlete (@PathVariable(value = "id") int athleteId) {
+    public ResponseEntity<?> getAthlete (@RequestHeader("Authorization") String token, @PathVariable(value = "id") int athleteId) {
         Athlete athlete = DBMANAGER.findAthlete(athleteId);
         if (athlete != null) {
             return new ResponseEntity<>(athlete, HttpStatus.OK);

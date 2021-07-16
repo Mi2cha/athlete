@@ -20,7 +20,6 @@ public class Athlete {
     private String nickname;
 
 
-    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sport_idfs")
     private Sport sport;

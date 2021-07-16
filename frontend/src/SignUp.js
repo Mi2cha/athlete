@@ -5,6 +5,7 @@ import {useHistory} from "react-router-dom";
 
 
 function SignUp(){
+
     const history = useHistory();
 
     const [user, setUser] = useState({
@@ -17,7 +18,7 @@ function SignUp(){
 
         console.log(user)
 
-        axios.post('/users', user)
+        axios.post('/auth/registerUser', user)
             .catch((err) => {
                 console.log(err);
             });

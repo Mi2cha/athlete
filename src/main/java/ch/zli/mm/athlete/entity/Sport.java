@@ -1,5 +1,6 @@
 package ch.zli.mm.athlete.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -19,7 +20,7 @@ public class Sport {
     private String name;
     private String description;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(
             mappedBy = "sport",
             cascade = CascadeType.ALL,
@@ -65,5 +66,23 @@ public class Sport {
 
     public void setAthletes(List<Athlete> athletes) {
         this.athletes = athletes;
+    }
+
+    public Athlete getAthlete(int id) {
+        for (Athlete v : athletes) {
+            if (v.getId() == id) {
+                return v;
+            }
+        }
+        return null;
+    }
+
+    public Athlete getAthlete(Athlete v) {
+        for (Athlete vTemp : athletes) {
+            if (vTemp.getId() == v.getId()) {
+                return vTemp;
+            }
+        }
+        return null;
     }
 }

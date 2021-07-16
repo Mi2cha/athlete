@@ -5,6 +5,8 @@ import {Link} from "react-router-dom";
 
 function UserList() {
 
+    axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
+
     const [users, setUsers] = useState([]);
 
     let count=0;
@@ -67,7 +69,7 @@ function UserList() {
             </div>
             <br/>
             <div className="float-right">
-                <Link  to={"/SportList"} className="btn btn-info  btn-lg btn-block">Go Athletes</Link>
+                <Link  to={"/athletes"} className="btn btn-info  btn-lg btn-block">Go Athletes</Link>
             </div>
         </div>
     )};

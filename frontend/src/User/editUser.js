@@ -6,6 +6,8 @@ import {useParams, useHistory} from "react-router-dom";
 
 
 function EditUser() {
+
+    axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
     const history = useHistory();
 
     const {id} = useParams();
@@ -35,7 +37,9 @@ function EditUser() {
             });
     }, []);
     return (
+
         <div>
+            <h1>Edit User</h1>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

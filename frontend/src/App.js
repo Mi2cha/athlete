@@ -10,6 +10,9 @@ import EditUser from "./User/editUser";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import AddUser from "./User/AddUser";
+import EditAthlete from "./Athlete/EditAthlete";
+import AthleteList from "./Athlete/AthleteList";
+import AddAthlete from "./Athlete/AddAthlete";
 
 function App() {
     return (
@@ -20,10 +23,11 @@ function App() {
                     <Route path={'/users'} component={UserList}/>
                     <Route path={'/addUser'} component={AddUser}/>
                     <Route path={'/signUp'} component={SignUp}/>
+                    <Route path="/editAthlete/:id" component={EditAthlete}/>
+                    <Route path={'/athletes'} component={AthleteList}/>
+                    <Route path={'/addAthlete'} component={AddAthlete}/>
                     <Route path={'/'} component={SignIn}/>
-                    <Route path="/editAthlete/:id" component={EditUser}/>
-                    <Route path={'/athletes'} component={UserList}/>
-                    <Route path={'/addAthlete'} component={AddUser}/>
+
                 </Switch>
             </Router>
         </div>

@@ -18,7 +18,7 @@ public class User {
     private String email;
     private String password;
 
-    @JsonBackReference
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_idfs")
     private Role role;
@@ -27,10 +27,9 @@ public class User {
 
     }
 
-    public User(String email, String password, Role role) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
-        this.role = role;
     }
 
     public int getId() {

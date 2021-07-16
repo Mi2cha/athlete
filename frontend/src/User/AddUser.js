@@ -1,18 +1,19 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import {Table, Button, Form} from 'react-bootstrap';
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 
 
 
-function AddUser() {
+function AddAthlete() {
+
+    axios.defaults.headers.common['Authorization'] = localStorage.getItem("token");
     const history = useHistory();
 
     const [user, setUser] = useState({});
 
     const sendUser=(e) =>{
         e.preventDefault();
-
         console.log(user)
 
         axios.post('/users', user)
@@ -25,6 +26,7 @@ function AddUser() {
 
     return (
         <div>
+            <h1>Add User</h1>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -47,4 +49,4 @@ function AddUser() {
 };
 
 
-export default AddUser;
+export default AddAthlete;
