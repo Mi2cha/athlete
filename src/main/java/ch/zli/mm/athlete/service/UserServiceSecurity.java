@@ -26,7 +26,7 @@ public class UserServiceSecurity implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User searchUser = DBMANAGER.findUser(username);
         if(searchUser == null) {
-            throw new UsernameNotFoundException("User not found");
+            throw new UsernameNotFoundException("User was not found");
         }
 
         return new org.springframework.security.core.userdetails.User(searchUser.getEmail(), searchUser.getPassword(), new ArrayList<>());

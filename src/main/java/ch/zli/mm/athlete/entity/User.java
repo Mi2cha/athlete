@@ -20,7 +20,7 @@ public class User {
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "role_idfs")
+    @JoinColumn()
     private Role role;
 
     public User(){

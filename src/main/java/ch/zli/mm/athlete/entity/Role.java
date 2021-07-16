@@ -1,7 +1,6 @@
 package ch.zli.mm.athlete.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -20,7 +19,6 @@ public class Role {
 
     private String title;
 
-    @JsonIgnore
     @OneToMany(
             mappedBy = "role",
             cascade = CascadeType.ALL,
