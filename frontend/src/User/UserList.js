@@ -7,6 +7,8 @@ function UserList() {
 
     const [users, setUsers] = useState([]);
 
+    let count=0;
+
     const getUsers = () => {
         axios.get("/users")
             .then((res) => {
@@ -19,7 +21,7 @@ function UserList() {
 
     useEffect( () => {
         getUsers()
-    }, []);
+    }, [users]);
 
 
     const deleteUser = (id) => {
@@ -59,10 +61,14 @@ function UserList() {
     });
     return (
         <div>
-            <div className="float-right">
-                <Button color="success">Add User</Button>
-            </div>
             {userList}
+            <div className="float-right">
+                <Link to={"/addUser"} className="btn btn-primary  btn-lg btn-block">Add User</Link>
+            </div>
+            <br/>
+            <div className="float-right">
+                <Link  to={"/SportList"} className="btn btn-info  btn-lg btn-block">Go Athletes</Link>
+            </div>
         </div>
     )};
 

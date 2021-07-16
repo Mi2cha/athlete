@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {Button, Form} from "react-bootstrap";
+import {useHistory} from "react-router-dom";
 
 
 function SignIn(){
-
+    const history = useHistory();
 
     const [user, setUser] = useState({
         email:"",
@@ -13,10 +14,14 @@ function SignIn(){
 
     const sendUser=(e) =>{
         e.preventDefault();
-
         console.log(user)
 
-        axios.post('/login', user)
+        axios.post('/auth/login', user)
+            .then((res) => {
+                if (res.data){
+                    history.push("/users")
+                }
+            })
             .catch((err) => {
                 console.log(err);
             });
